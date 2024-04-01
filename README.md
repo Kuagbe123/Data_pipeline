@@ -64,6 +64,31 @@ To run the script and execute SQL queries, you need the following:
 Ten example queries are provided in the `queries.sql` file. These queries cover various aspects of the generated data, such as counting records, finding customers with specific preferences, calculating averages, and more.
 
 ## Pipeline Diagram
+Here's a textual representation of the pipeline sketch for the data ingestion process:
+
+```
+Data Generation     Data Ingestion      Query Execution      Result Analysis
+   (Faker)            (Python)             (SQL)               (Analysis)
+     |                   |                   |                     |
+     |                   |                   |                     |
+     V                   V                   V                     V
++----------+       +--------------+     +--------------+        +--------------+
+| Demographics |-----> | MySQL DB     |---->| SQL Queries  |----->  | Query Results|
+| Generator   |       | Ingestion    |     | Execution    |        | Analysis     |
++----------+       +--------------+     +--------------+        +--------------+
+```
+
+This pipeline sketch illustrates the flow of data from generation with the Faker library to analysis of the query results:
+
+1. **Data Generation (Faker)**: Synthetic data representing demographics, transaction activity, customer preferences, and communication methods is generated using the Faker library.
+
+2. **Data Ingestion (Python)**: A Python script reads the generated data and ingests it into a MySQL database. This step involves establishing a connection to the database and inserting the generated data into the appropriate tables.
+
+3. **Query Execution (SQL)**: SQL queries are executed on the MySQL database to extract insights from the ingested data. These queries may include various analytical operations such as filtering, aggregation, and calculation.
+
+4. **Result Analysis (Analysis)**: The results of the executed queries are analyzed to gain insights into the dataset. This analysis may involve statistical analysis, visualization, or further processing of the data to derive meaningful conclusions.
+
+This pipeline sketch provides a high-level overview of the data ingestion process, from data generation to result analysis, highlighting the key steps involved in the pipeline.
 
 A diagram illustrating the data ingestion pipeline is provided in the repository. It shows the flow of data from generation with Faker to ingestion into the MySQL database.
 
